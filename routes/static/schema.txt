@@ -1,0 +1,105 @@
+  "Campaign name": {
+    "type": "string",
+    "description": "Name of the advertising campaign"
+  },
+  "Ad Set Name": {
+    "type": "string",
+    "description": "Name of the ad set within the campaign"
+  },
+  "Objective": {
+    "type": "string",
+    "description": "Marketing objective targeted by the ad set (e.g., app install, lead generation, conversion)"
+  },
+  "Delivery status": {
+    "type": "string",
+    "description": "Current delivery status of the ad set (e.g., active, not delivering, inactive)"
+  },
+  "Delivery level": {
+    "type": "string",
+    "description": "Targeting level chosen for the ad set (e.g., adset, campaign)"
+  },
+  "Reach": {
+    "type": "number",
+    "description": "Estimated number of unique people who saw the ad"
+  },
+  "Impressions": {
+    "type": "number",
+    "description": "Total number of times the ad was displayed"
+  },
+  "Frequency": {
+    "type": "number",
+    "description": "Average number of times each person saw the ad"
+  },
+  "Result type": {
+    "type": "string",
+    "description": "Type of action users took after seeing the ad (e.g., app installs, leads, sales)"
+  },
+  "Results": {
+    "type": "string",
+    "description": "Specific result achieved (e.g., number of app installs, lead registrations, conversion values)"
+  },
+  "Amount spent (USD)": {
+    "type": "number",
+    "description": "Total cost spent on the ad set in USD"
+  },
+  "Cost per result": {
+    "type": "number",
+    "description": "Average cost incurred for each achieved result"
+  },
+  "Starts": {
+    "type": "string",
+    "description": "Date and time the ad set started running"
+  },
+  "Ends": {
+    "type": "string",
+    "description": "Date and time the ad set stopped running (or 'Ongoing' if active)"
+  },
+  "CPM (cost per 1,000 impressions)": {
+    "type": "number",
+    "description": "Cost per 1,000 impressions received"
+  },
+  "Link clicks": {
+    "type": "number",
+    "description": "Total number of clicks on links within the ad"
+  },
+  "CPC (cost per link click)": {
+    "type": "number",
+    "description": "Average cost incurred for each link click"
+  },
+  "Clicks (all)": {
+    "type": "number",
+    "description": "Total number of clicks on the ad, including link clicks"
+  },
+  "CPC (all)": {
+    "type": "number",
+    "description": "Average cost incurred for each click on the ad"
+  },
+  "CTR (all)": {
+    "type": "number",
+    "description": "Click-through rate (CTR) for all clicks on the ad"
+  },
+  "Gross impressions (includes invalid impressions from non-human traffic)": {
+    "type": "number",
+    "description": "Total number of times the ad was displayed, including invalid impressions"
+  },
+  "Attribution setting": {
+    "type": "string",
+    "description": "Click attribution window used for measuring results (e.g., 1-day click, 7-day click)"
+  },
+  "Engagement rate ranking": {
+    "type": "string",
+    "description": "Relative ranking of the ad set compared to others based on engagement metrics"
+  },
+  "Achievements unlocked": {
+    "type": "string",
+    "description": "Specific achievements unlocked through the ad set (e.g., post engagements, message conversations)"
+  },
+  "Cost per achievement unlocked": {
+    "type": "number",
+    "description": "Average cost incurred for each achievement unlocked"
+  },
+  "Unique adds of payment info": {
+    "type": "number",
+    "description": "Number of unique users who added payment information after seeing the ad"
+  },
+  
