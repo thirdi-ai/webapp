@@ -48,12 +48,26 @@ proceed.addEventListener("click", () => {
     .then((x) => console.log(x))
 });
 
-document.getElementById("runChat").addEventListener("click", () => {
+document.getElementById("runChatGPT").addEventListener("click", () => {
+  fetch('/runChatGPT', {
+    method: "POST",
+  })
+    .then((res) => {
+      console.log(res);
+      console.log(res.text());
+      textArea.value = res.text()
+    })
+    .then((x) => console.log(x))
+});
+
+
+document.getElementById("runGemini").addEventListener("click", () => {
   fetch('/runChat', {
     method: "POST",
   })
     .then((res) => {
       console.log(res);
+      console.log(res.text());
       textArea.value = res.text()
     })
     .then((x) => console.log(x))

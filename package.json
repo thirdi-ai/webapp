@@ -17,6 +17,6 @@
     "fs": "^0.0.1-security",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "openai": "^4.26.0"
+    "openai": "^4.28.0"
   }
 }
