@@ -15,10 +15,10 @@ var staticSrc = path.join(__dirname, "/static/");
 router.use(express.static(staticSrc));
 
 const OPENAI_TEMPARATURE = 0.25
-const OPENAI_RESPONSE_FORMAT = "verbose_json"
+const OPENAI_MODEL_NAME = "gpt-4-0125-preview"
 
 const openai = new openAI({
-  apiKey: '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',
+  apiKey: process.env.OPENAI_API_KEY,
 })
 // File Reading
 const multer = Multer({
@@ -76,7 +76,7 @@ router.post('/runChatGPT', async (req,res) => {
         { role: "user", content: basePrompt }
       ],
       temperature: OPENAI_TEMPARATURE,
-      model: "gpt-4-0125-preview",
+      model: OPENAI_MODEL_NAME,
     });
       
     console.log("First Level");
@@ -91,7 +91,7 @@ router.post('/runChatGPT', async (req,res) => {
           { role: "user", content: "Schema format is COLUMN_NAME:data_type \n" + data1 }
         ],
         temperature: OPENAI_TEMPARATURE,
-        model: "gpt-4-0125-preview",
+        model: OPENAI_MODEL_NAME,
       });
       console.log("Second Level");
       console.log(newR.choices[0]);
@@ -100,7 +100,7 @@ router.post('/runChatGPT', async (req,res) => {
           { role: "user", content: csvData }
         ],
         temperature: OPENAI_TEMPARATURE,
-        model: "gpt-4-0125-preview",
+        model: OPENAI_MODEL_NAME,
       });
 
       console.log("Final");
