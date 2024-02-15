@@ -4,22 +4,33 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body>
-    <h1>
-      <%= title %>
-    </h1>
-    <span>
+  <body class="whole-page">
+    <div class="site-logo">
+      <a href="https://thirdi.ai/" title="Thirdi"> <img src="/images/Thirdi.png" width="1500" height="442" alt="Thirdi"> </a>
+    </div>
+    <div>
       <label for="csvFile">Upload the file</label>
-      <input type="file" id="csvFile" name="csvFile" accept=".csv, .pdf" />
-      <table id="tableOut"></table>
-      <button id="proceed">Proceed</button>
-      <button id="uploadFile">Upload</button>
-    </span>
-    <span>
-      <button id="runChat">RunChat</button>
-      <textarea id="chatOutput"></textarea>
-    </span>
-    
+      <input  type="file" id="csvFile" name="csvFile" accept=".csv, .pdf" /><br><br>
+      <table class="styled-table" id="tableOut"></table><br><br>
+      <button class="styled-button" id="proceed">Proceed</button><br>
+      <!-- <button class="styled-button"id="uploadFile">Upload</button><br><br> -->
+      <br><br>
+    </div>
+    <div class="sec-span">
+      <div class="results-container">
+        
+        <div class="half">
+          <button class="styled-button" id="runChatGPT">Analyze</button>
+          <span class="half" id="chatGPTResult"></span>
+        </div>
+        
+        <div class="half" >
+          <button class="styled-button" id="runGemini">Analyze II</button>
+          <span class="half" id="geminiResult"></span>
+        </div>
+        
+    </div>
+    </div>
     <script src="/javascripts/upload.js"></script>
     <script src="/javascripts/renderTable.js"></script>
   </body>
