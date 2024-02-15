@@ -7,7 +7,7 @@ const Multer = require('multer');
 const openAI = require('openai');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 // Access your API key as an environment variable (see "Set up your API key" above)
-const genAI = new GoogleGenerativeAI('AIzaSyCMOEJ4NSJJ6Pe2QhbyQ5SEvub9N8x4hUw');
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-pro"});
 const fs = require('fs');
 // ...
@@ -80,7 +80,7 @@ router.post('/runChatGPT', async (req,res) => {
     });
       
     console.log("First Level");
-    console.log(completion.choices[0]);
+    // console.log(completion.choices[0]);
     fs.readFile(staticSrc + "schema2.txt", 'utf8', async (err1, data1) => {
       if (err1) {
         console.error(err1);
@@ -95,17 +95,19 @@ router.post('/runChatGPT', async (req,res) => {
       });
       console.log("Second Level");
       console.log(newR.choices[0]);
-      const newR1 = await openai.chat.completions.create({
-        messages: [
-          { role: "user", content: csvData }
-        ],
-        temperature: OPENAI_TEMPARATURE,
-        model: OPENAI_MODEL_NAME,
-      });
+      // const newR1 = await openai.chat.completions.create({
+      //   messages: [
+      //     { role: "user", content: csvData }
+      //   ],
+      //   temperature: OPENAI_TEMPARATURE,
+      //   model: OPENAI_MODEL_NAME,
+      // });
 
       console.log("Final");
-      console.log(newR1.choices[0].message.content);
-      res.status(200).send(newR1.choices[0].message.content);
+      // console.log(newR1.choices[0].message.content);
+      res.status(200).send(
+        // newR1.choices[0].message.content
+        );
     });
   });
 });
