@@ -1,0 +1,40 @@
+Campaign name: string
+Ad Set Name: string
+Objective: string
+Delivery status: string
+Delivery level: string
+Reach: number
+Impressions: number
+Frequency: number
+Result type: string
+Results: string
+Amount spent (USD): number
+Cost per result: number
+Starts: string
+Ends: string
+CPM (cost per 1,000 impressions): number
+Link clicks: number
+CPC (cost per link click): number
+Clicks (all): number
+CPC (all): number
+CTR (all): number
+Gross impressions (includes invalid impressions from non-human traffic): number
+Attribution setting: string
+Engagement rate ranking: string
+Achievements unlocked: string
+Cost per achievement unlocked: number
+Unique adds of payment info: number
+Adds of payment info conversion value: number
+Cost per add of payment info: number
+Adds of payment info: number
+Cost per unique achievement unlocked: number
+Unique achievements unlocked: string
+Achievements unlocked conversion value: number
+Reporting starts: string
+Reporting ends: string
+
+
+#############
+
+START ANALYSIS #
+If you understand, ask me for data

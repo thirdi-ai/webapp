@@ -1,0 +1,125 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+html {
+  height: 100%;
+  margin: 0;
+}
+a {
+  color: #00B7FF;
+}
+
+img {
+  display: block;
+  border: 0;
+  max-width: 100%;
+  height: auto;
+  width: 100px;
+  align-items: center;
+  position: relative;
+  color: #111;
+  background-color: whitesmoke;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.site-logo {
+  display: block;
+  border: 0;
+  max-width: 100%;
+  height: auto;
+  width: 100px;
+  align-items: center;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.whole-page {
+  background-color:whitesmoke;
+  }
+
+.results-container {
+  display: flex;
+  height: 100%;
+    /*width: 200px; /* Adjust width as needed */
+    /*height: 100px; /* Adjust height as needed */
+    overflow: auto; /* This enables the scrollbar */
+    /*border: 1px solid #ccc; /* Optional: Add a border */ 
+    padding: 10px; /* Optional: Add some padding */
+}
+
+.half {
+  flex:1;
+  padding: 10px;
+  overflow: auto;
+  width: 300px; /* Change this to desired width */
+  height: 200px; /* Change this to desired height */
+  
+}
+.sec-span
+{
+  display: block; /* or inline-block */
+  display: block; /* or inline-block */
+}
+
+styled-table th, .styled-table td {
+  background-color: paleturquoise;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  text-align: left;
+}
+.styled-table td:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.styled-table th {
+  background-color: peachpuff;
+  color: white;
+}
+
+.styled-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+
+
+.styled-button {
+  background-color:honeydew;
+  border: none;
+  /*color:aliceblue; */
+  padding: 8px 8px; 
+  text-align: center;
+  text-decoration:solid;
+  display:flex;
+  /*font-size: 16px; */
+  margin: 4px 2px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  /*border-radius: 8px; */
+  transition-duration: 0.4s;
+}
+
+.styled-button:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  background-color:lightblue; /* Darker green */
+}

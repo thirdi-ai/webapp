@@ -1,0 +1,18 @@
+Campaign name        Name of the campaign
+Region        Specific Indian state where this campaign performed
+Results - 
+Reach        Number of people this campaign reached
+Impressions        Total number of impressions created
+Cost per result        The cost to the advertiser per click
+Amount spent (INR)        Amount spent in INR
+Link clicks        NUmber of users who clicked the link
+ CPM (cost per 1,000 impressions)         Cost per 1000 impressions of the ad
+ CTR (link click-through rate)         Number of people who clicked the link on the ad
+ CPC (cost per link click)         Cost per click of the link on the ad
+Placement        Where the ad was placed on FB properties
+Platform        On which platform was this ad seen by the user
+
+#############
+
+START ANALYSIS #
+If you understand, ask me for my data
