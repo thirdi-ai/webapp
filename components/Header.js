@@ -1,13 +1,11 @@
-import React from 'react';
-import { ReactComponent as SearchIcon } from "../assets/asset6.svg";
+// import { MySearchIcon } from "@/Icons";
 
-const Header = () => {
-  return (
-    <div>
-      <header className="content-top h-[60px] flex justify-between items-center border-b border-grey px-6 bg-daisy">
+export default function Header(){
+    return <main>
+        <header className="content-top h-[60px] flex justify-between items-center border-b border-grey px-6 bg-daisy">
         <form>
           <div className="relative flex items-center gap-2 border border-grey rounded-md p-2">
-            <SearchIcon className="w-4 h-4 mb-1" style={{ stroke: "grey" }} />
+            {/* <MySearchIcon className="w-4 h-4 mb-1" style={{ stroke: "grey" }} /> */}
             <input
               type="text"
               name="search"
@@ -23,8 +21,5 @@ const Header = () => {
           </div>
         </div>
       </header>
-    </div>
-  )
+    </main>
 }
-
-export default Header

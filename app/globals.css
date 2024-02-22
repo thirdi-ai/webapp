@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 20;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+.gradient {
+  background-image: linear-gradient(to right, violet, rgb(35, 156, 204));
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 0;
+}
+
+/* Target the scrollbar thumb (the draggable part of the scrollbar) */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  width: 0;
+}
+
+@layer utilities {
+  .nav-links {
+    @apply flex justify-start items-center gap-3 px-3 py-2 rounded-lg text-[15px] font-[500];
+  }
+  .card {
+    @apply rounded-lg border border-grey w-full h-full relative p-6 flex flex-col gap-10;
+  }
+  .desc {
+    @apply text-base text-gray-light mb-1;
+  }
+  .title {
+    @apply text-[28px] font-[500] text-black;
+  }
+  .flex-center {
+    @apply flex justify-between items-center;
+  }
+  .btn {
+    @apply bg-violet text-white px-5 py-2 rounded-full font-[500] mt-2 cursor-pointer text-[15px];
+  }
+}
