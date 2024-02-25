@@ -53,4 +53,8 @@
   .btn {
     @apply bg-violet text-white px-5 py-2 rounded-full font-[500] mt-2 cursor-pointer text-[15px];
   }
+  /* .active{
+    @apply bg-black text-white;
+  } */
 }
+

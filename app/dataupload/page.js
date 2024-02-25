@@ -108,7 +108,7 @@ export default function DataUpload() {
             )}
           </div>
           {!showLoader && (
-            <DataTable data={csvData} onButtonClick={handleButtonClick} />
+            <DataTable data={csvData} onButtonClick={handleButtonClick} showBtn={showBtn}/>
           )}
           {showBtn && (
             <div className="flex-center relative flex-col w-[600px] m-auto gap-4">
