@@ -1,14 +1,14 @@
-import CompetitorAnalysisCard from "@/components/CompaignDetailsCard";
-import RecommendationCard from "@/components/RecommendationCard";
+import CompetitorAnalysisCard from "@/components/CompetitorAnalysisCard";
 import CompaignDetailsCard from "@/components/CompaignDetailsCard";
 import AudienceSegmentationCard from "@/components/AudienceSegmentationCard";
+import RecommendationContainer from "@/components/RecommendationContainer";
 
 export default function HomePage() {
   return (
     <main>
       <div className="container p-6 flex flex-col gap-8">
         <CompaignDetailsCard />
-        <RecommendationCard />
+        <RecommendationContainer />
         <AudienceSegmentationCard />
         <CompetitorAnalysisCard />
       </div>
