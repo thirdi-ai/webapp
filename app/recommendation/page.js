@@ -1,16 +1,24 @@
-'use client';
-// import { useRouter } from "next/navigation";
 import RecommendationContainer from "@/components/RecommendationContainer";
+import Link from "next/link";
 
-export default function RecommendationsPage() {
-  // const router = useRouter();
-  // const generateRecommendations = String(router?.query?.generateRecommendations || "");
+export default function RecommendationsPage({ searchParams }) {
+  const recommendation = searchParams.showRecommendation;
 
   return (
     <main className="p-6">
-      <h1>No Recommendations</h1>
-      <h1 className="text-3xl font-bold mb-5">Recommendations</h1>
-      <RecommendationContainer />
+      {recommendation ? (
+        <>
+          <h1 className="text-3xl font-bold mb-5">Recommendations</h1>
+          <RecommendationContainer />
+        </>
+      ) : (
+        <>
+          <h1 className="text-lg">No Recommendations</h1>
+          <Link href="/dataupload">
+            <button className="btn">Upload Data</button>
+          </Link>
+        </>
+      )}
     </main>
   );
 }

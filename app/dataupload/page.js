@@ -7,7 +7,6 @@ import Image from "next/image";
 import DataTable from "@/components/DataTable";
 // import { useRouter } from "next/router";
 
-
 export default function DataUpload() {
   //  const router = useRouter();
   const [selectedFile, setSelectedFile] = useState(null);
@@ -129,13 +128,15 @@ export default function DataUpload() {
               </div>
             )}
             {genereateRecommendations ? (
-              <Link href="/recommendation">
-                <button className={`btn`} onClick={handleRecommendations}>
+              <Link
+                href={{ pathname: "/recommendation", query: { showRecommendation: true } }}
+              >
+                <button className={`btn`} >
                   View Recommendations
                 </button>
               </Link>
             ) : (
-              <button className={`btn`} onClick={handleRecommendations}>
+              <button className={`btn`} onClick={handleRecommendations} >
                 Generate Recommendations
               </button>
             )}
