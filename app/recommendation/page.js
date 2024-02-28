@@ -10,12 +10,14 @@ export default function RecommendationsPage({ searchParams }) {
         <>
           <h1 className="text-3xl font-bold mb-5">Recommendations</h1>
           <RecommendationContainer />
+          <h1>hey</h1>
         </>
       ) : (
         <>
           <h1 className="text-lg">No Recommendations</h1>
           <Link href="/dataupload">
             <button className="btn">Upload Data</button>
+  
           </Link>
         </>
       )}
