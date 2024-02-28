@@ -47,6 +47,27 @@ router.post('/continue', express.json(), (req,res) => {
 
 router.post('/upload', multer.single('csvFile'), (req,res) => {
   try {
+    if(req.file) {
+      const allowedMimeTypes = ['text/csv', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
+      if (!allowedMimeTypes.includes(req.file.mimetype)) {
+        return res.status(400).send('Please upload a CSV or Excel file.');
+      }
+      const blob = bucket.file(req.file.originalname);
+      const blobStream = blob.createWriteStream();
+
+      blobStream.on("finish", ()=> {
+        res.status(200).send("Success");
+      });
+      blobStream.end(req.file.buffer);
+    }
+  } catch(e) {
+    console.log(e);
+    res.status(500).send(e);
+  }
+})
+
+router.post('/upload', multer.single('csvFile'), (req,res) => {
+  try {
     // console.log("Attempting Upload");
     if(req.file) {
       const blob = bucket.file(req.file.originalname);
