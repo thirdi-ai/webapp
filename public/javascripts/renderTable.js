@@ -14,9 +14,9 @@ var htmlString = `<h2>Analysis and Recommendations</h2>
     <p><strong>Strong Performance:</strong> 10% lower CAC &amp; 15% better than Adset 1. Recommendation: **Redirect ₹50,000 from Adset 1 to Adset 4.**</p>
   </li>
   <li>
-    <h3>ADSET 9</h3>
+    <h3>ADSET 9</h3>asdasdasdas
     <p><strong>Weekend Boost:</strong> 20% higher CR observed on weekends. Recommendation: **Shift Ad spends to weekends only.**</p>
-  </li>
+  </li>sdfsdfsdfsd
   <li>
     <h3>Adset 3</h3>
     <p><strong>Declining Performance:</strong> Declining CR WoW since the start of the month. Recommendation: **Revise creatives with clear call-to-action.**</p>
@@ -25,7 +25,7 @@ var htmlString = `<h2>Analysis and Recommendations</h2>
 
 <h3>Additional Recommendations</h3>
 <ol>
-<li> TESTING LI </li
+<li> TESTING LI </li>
   <li><strong>Timing:</strong> Allocate more budget towards afternoon and early evening (25% increase in engagement).</li>
   <li><strong>Data Collection:</strong> Prioritize complete tracking mechanisms for comprehensive performance data.</li>
 </ol>`
