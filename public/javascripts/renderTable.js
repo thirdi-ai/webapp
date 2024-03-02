@@ -25,8 +25,8 @@ var htmlString = `<h2>Analysis and Recommendations</h2>
 
 <h3>Additional Recommendations</h3>
 <ol>
+<li> TESTING LI </li
   <li><strong>Timing:</strong> Allocate more budget towards afternoon and early evening (25% increase in engagement).</li>
-  <li><strong>Targeting:</strong> Increase focus on Tier 1 cities for higher evening engagement.</li>
   <li><strong>Data Collection:</strong> Prioritize complete tracking mechanisms for comprehensive performance data.</li>
 </ol>`
 
