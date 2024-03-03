@@ -1,5 +1,5 @@
 'use client';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Card from "@/components/Card";
 import Link from "next/link";
 import asset8 from "@/assets/asset8.png";
@@ -10,11 +10,25 @@ export default function DataUpload() {
     const [selectedFile, setSelectedFile] = useState(null);
     const [displayFileName, setDisplayFileName] = useState(false);
     const [showLoader, setShowLoader] = useState(false);
+    const [data, setData] = useState([]);
     const [csvData, setCsvData] = useState([]);
     const [showBtn, setShowBtn] = useState(false);
     const [genereateRecommendations, setGenerateRecommendations] =
       useState(false);
   
+      useEffect(() => {
+        // Make a GET request to your backend API
+        fetch('http://localhost:3000/api/hello') // Assuming your API endpoint is /api/hello
+          .then(response => response.json()) // Parse response as JSON
+          .then(apiData => {
+            setData(apiData); 
+            console.log("hello world");// Set the response data to the state
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+          });
+      }, []);
+
     // parseCSV function
     const parseCSV = (csvText) => {
       const lines = csvText.split("\n");
