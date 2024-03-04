@@ -10,7 +10,7 @@ export default function SideBar() {
   const path = usePathname();
 
   return (
-    <div className="sidebar relative bg-daisy border-r border-grey gradient-01">
+    <div className="sidebar min-w-[300px] relative p-[30px]">
       <div className="sidebar-top h-[60px] flex justify-between items-center px-6 border-b border-grey">
         <div className="logo">
           <Link href="/">
