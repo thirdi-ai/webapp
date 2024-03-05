@@ -38,6 +38,19 @@
   width: 0;
 
 }
+.custom-scrollbar-2::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f0f0ff;
+  border-radius: 20px;
+}
+
+/* Target the scrollbar thumb (the draggable part of the scrollbar) */
+.custom-scrollbar-2::-webkit-scrollbar-thumb {
+  background-color: #cbcbfd;
+  border-radius: 20px;
+  width: 8px;
+
+}
 
 @layer utilities {
   .nav-links {
@@ -45,7 +58,7 @@
   }
   .card {
     @apply rounded-lg border border-grey-600 w-full h-full relative p-[30px] flex flex-col gap-10 custom-shadow;
-  }
+  }ill
   .desc {
     @apply text-base text-gray-light mb-1;
   }

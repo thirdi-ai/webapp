@@ -14,7 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="flex w-full relative min-h-screen">
+      <body className="flex w-full relative max-h-screen min-h-screen">
         <SideBar />
         {children}
         <Details />
