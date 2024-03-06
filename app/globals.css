@@ -25,6 +25,10 @@
 .gradient {
   background-image: linear-gradient(to right, violet, rgb(35, 156, 204));
 }
+.custom-shadow{
+  box-shadow: 0px 0px 20.11492919921875px 0px #0000000A;
+  /* box-shadow: 0px 0px 21px 0px #0000000A; */
+}
 .custom-scrollbar::-webkit-scrollbar {
   width: 0;
 }
@@ -32,6 +36,20 @@
 /* Target the scrollbar thumb (the draggable part of the scrollbar) */
 .custom-scrollbar::-webkit-scrollbar-thumb {
   width: 0;
+
+}
+.custom-scrollbar-2::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f0f0ff;
+  border-radius: 20px;
+}
+
+/* Target the scrollbar thumb (the draggable part of the scrollbar) */
+.custom-scrollbar-2::-webkit-scrollbar-thumb {
+  background-color: #cbcbfd;
+  border-radius: 20px;
+  width: 8px;
+
 }
 
 @layer utilities {
@@ -39,8 +57,8 @@
     @apply flex justify-start items-center gap-3 px-3 py-2 rounded-lg text-[15px] font-[500];
   }
   .card {
-    @apply rounded-lg border border-grey w-full h-full relative p-6 flex flex-col gap-10;
-  }
+    @apply rounded-lg border border-grey-600 w-full h-full relative p-[30px] flex flex-col gap-10 custom-shadow;
+  }ill
   .desc {
     @apply text-base text-gray-light mb-1;
   }
@@ -50,8 +68,11 @@
   .flex-center {
     @apply flex justify-between items-center;
   }
-  .btn {
+  /* .btn {
     @apply bg-violet text-white px-5 py-2 rounded-full font-[500] mt-2 cursor-pointer text-[15px];
+  } */
+  .btn{
+    @apply bg-blue-400 rounded-full py-[8.62px] px-[17.24px] text-sm text-white
   }
   /* .active{
     @apply bg-black text-white;

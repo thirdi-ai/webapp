@@ -10,8 +10,8 @@ export default function SideBar() {
   const path = usePathname();
 
   return (
-    <div className="sidebar relative bg-daisy border-r border-grey gradient-01">
-      <div className="sidebar-top h-[60px] flex justify-between items-center px-6 border-b border-grey">
+    <div className="sidebar min-w-[350px] max-h-screen overflow-hidden relative p-[30px]">
+      <div className="sidebar-top h-[60px] flex justify-between items-center">
         <div className="logo">
           <Link href="/">
             <Image src={thirdiLogo} alt="thirdi-logo" className="w-[80px]" />
@@ -21,8 +21,11 @@ export default function SideBar() {
         <MyBellIcon className="h-4 w-4" />
       </div> */}
       </div>
+      <div>
+        <input type="text" name="search" id="search" placeholder="Search Name"/>
+      </div>
       <div className="w-full py-4">
-        <nav className="px-4">
+        <nav>
           <ul>
             <li>
               <Link href="/" className={`nav-links ${path === "/" ? "bg-gray-200": ""} `}>

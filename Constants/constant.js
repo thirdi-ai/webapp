@@ -1,3 +1,7 @@
+import asset10 from "@/assets/asset10.svg";
+import asset12 from "@/assets/asset12.svg";
+import asset13 from "@/assets/asset13.svg";
+
 export const Recommendations = [
   {
     id: 1,
@@ -5,7 +9,7 @@ export const Recommendations = [
     desc: "Implementing the recommended bid adjustments will increase the daily budget by approximately 15%, resulting in a potential increase in overall spend and conversions.",
     cpr: 6,
     roas: 900,
-    cr: 15
+    cr: 15,
   },
   {
     id: 2,
@@ -13,7 +17,7 @@ export const Recommendations = [
     desc: "Recent analysis of ad performance indicates that optimizing ad creatives can lead to higher engagement and conversions. ",
     cpr: 6,
     roas: 900,
-    cr: 15
+    cr: 15,
   },
   {
     id: 3,
@@ -21,7 +25,7 @@ export const Recommendations = [
     desc: "Analyzing recent campaign performance reveals that expanding the target audience can be beneficial for enhancing reach and driving more conversions. ",
     cpr: 6,
     roas: 900,
-    cr: 15
+    cr: 15,
   },
   {
     id: 4,
@@ -29,7 +33,7 @@ export const Recommendations = [
     desc: "Analysis of ad performance data suggests that utilizing ad extensions can significantly improve ad visibility and engagement. ",
     cpr: 6,
     roas: 900,
-    cr: 15
+    cr: 15,
   },
   {
     id: 5,
@@ -37,7 +41,7 @@ export const Recommendations = [
     desc: "Test different ad creative variations, including headlines, images, and ad copy, to identify which elements resonate best with your target audience. ",
     cpr: 6,
     roas: 900,
-    cr: 15
+    cr: 15,
   },
   {
     id: 6,
@@ -45,7 +49,68 @@ export const Recommendations = [
     desc: "Utilize ad scheduling to control when your ads are shown to your target audience. By identifying peak times of user activity and adjusting your ad schedule accordingly.",
     cpr: 6,
     roas: 900,
-    cr: 15
+    cr: 15,
   },
+];
 
+export const Connectors = [
+  {
+    imgUrl: asset12,
+    name: "Google Ads",
+    desc: "Integrate recommendations from Google Search, Youtube and Display Network",
+  },
+  {
+    imgUrl: asset13,
+    name: "Meta Ads",
+    desc: "Pull in recommendations from Facebook, Instagram and Facebook Audience Network",
+  },
+  {
+    imgUrl: asset10,
+    name: "HubSpot",
+    desc: "Sync your Contact, Company and Deal objects with Factors on a daily basis",
+  },
+  {
+    imgUrl: asset12,
+    name: "Google Ads",
+    desc: "Integrate recommendations from Google Search, Youtube and Display Network",
+  },
+  {
+    imgUrl: asset13,
+    name: "Meta Ads",
+    desc: "Pull in recommendations from Facebook, Instagram and Facebook Audience Network",
+  },
+  {
+    imgUrl: asset10,
+    name: "HubSpot",
+    desc: "Sync your Contact, Company and Deal objects with Factors on a daily basis",
+  },
+  {
+    imgUrl: asset12,
+    name: "Google Ads",
+    desc: "Integrate recommendations from Google Search, Youtube and Display Network",
+  },
+  {
+    imgUrl: asset13,
+    name: "Meta Ads",
+    desc: "Pull in recommendations from Facebook, Instagram and Facebook Audience Network",
+  },
+  {
+    imgUrl: asset10,
+    name: "HubSpot",
+    desc: "Sync your Contact, Company and Deal objects with Factors on a daily basis",
+  }, {
+    imgUrl: asset12,
+    name: "Google Ads",
+    desc: "Integrate recommendations from Google Search, Youtube and Display Network",
+  },
+  {
+    imgUrl: asset13,
+    name: "Meta Ads",
+    desc: "Pull in recommendations from Facebook, Instagram and Facebook Audience Network",
+  },
+  {
+    imgUrl: asset10,
+    name: "HubSpot",
+    desc: "Sync your Contact, Company and Deal objects with Factors on a daily basis",
+  },
 ];
