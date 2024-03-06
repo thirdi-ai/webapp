@@ -13,13 +13,13 @@ export default function ModalComponent({ onBtnClick }) {
     async function addFileChangeHandler(){
       const response = await fetch("/api/upload", {
         method:"POST",
-        body: file,
+        body: JSON.stringify(file),
         headers:{
           'Content-Type':'application/json'
         }
       });
       const data = await response.json();
-      console.log(file);
+      console.log(data);
     }
     addFileChangeHandler();
   }
