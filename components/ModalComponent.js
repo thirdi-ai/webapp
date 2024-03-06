@@ -1,12 +1,28 @@
+
 import Image from "next/image";
 import asset19 from "@/assets/asset19.svg";
 import asset20 from "@/assets/asset20.svg";
 import asset21 from "@/assets/asset21.svg";
 import asset22 from "@/assets/asset22.svg";
-import Card from "./Card";
 import Link from "next/link";
+// import { useEffect } from "react";
 
 export default function ModalComponent({ onBtnClick }) {
+  const handleFileChange = (e)=>{
+    const file = e.target.files[0];
+    async function addFileChangeHandler(){
+      const response = await fetch("/api/upload", {
+        method:"POST",
+        body: file,
+        headers:{
+          'Content-Type':'application/json'
+        }
+      });
+      const data = await response.json();
+      console.log(file);
+    }
+    addFileChangeHandler();
+  }
   return (
     <div className="modal-overlay w-[100vw] h-[100vh] overflow-hidden absolute z-50 top-0 left-0 bg-[#0217238A] bg-opacity-[54%] flex justify-center items-center">
       <div className="modal-wrapper w-[1090px] h-[546px] relative bg-white rounded-md">
@@ -20,7 +36,7 @@ export default function ModalComponent({ onBtnClick }) {
                 className="p-1 bg-white-400 rounded-[4px]"
                 onClick={onBtnClick}
               >
-                <Image src={asset19} width={12} height={12} />
+                <Image src={asset19} width={12} height={12} alt="cross" />
               </button>
             </div>
             <div className="text-[13px] flex gap-6 mt-4">
@@ -40,19 +56,31 @@ export default function ModalComponent({ onBtnClick }) {
           </div>
           <div className="modal-grid flex h-full relative">
             <div className="w-2/6 border-r border-grey-600 h-full flex-center flex-col relative">
-              <div className="px-5" >
+              <div className="px-5">
                 <div className="relative w-full  pt-6 pb-3 flex place-items-center gap-3 border-b border-grey-600">
-                  <Image src={asset21} width={50} />
+                  <Image src={asset21} width={50} height={50} alt="csv"/>
                   <span>CSV </span>
                 </div>
                 <div className="text-sm  text-gray-light pt-3">
-                  See <Link href="/" className="text-blue-600">our documentation</Link> for more
-                  information on how to format your CSV file.
+                  See
+                  <Link href="/" className="text-blue-600">
+                    our documentation
+                  </Link>
+                  for more information on how to format your CSV file.
                 </div>
               </div>
               <div className="h-[54px] relative border-t border-grey-600 w-full text-sm px-5 flex-center">
                 <button>Cancel</button>
-                <button className="flex place-items-center bg-grey text-white px-3 rounded-sm py-1"><Image src={asset22} width={14} height={12} className="mr-1"/>Next</button>
+                <button className="flex place-items-center bg-grey text-white px-3 rounded-sm py-1">
+                  <Image
+                    src={asset22}
+                    width={14}
+                    height={12}
+                    className="mr-1"
+                    alt="right-arrow"
+                  />
+                  Next
+                </button>
               </div>
             </div>
             <div className="w-4/6 h-full relative p-7 bg-white-smoke">
@@ -68,6 +96,7 @@ export default function ModalComponent({ onBtnClick }) {
                       width={20}
                       height={20}
                       className="mx-auto pb-2"
+                      alt="uploadfile"
                     />
                     <div className="text-grey-500 ">
                       Drag and drop or
@@ -85,7 +114,7 @@ export default function ModalComponent({ onBtnClick }) {
                       name="csvFile"
                       accept=".csv, .xls, .xlsx"
                       className="inputfile hidden"
-                      // onChange={handleFileChange}
+                      onChange={handleFileChange}
                     />
                   </label>
                 </div>
