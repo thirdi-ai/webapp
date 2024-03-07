@@ -1,28 +1,40 @@
-
+"use client";
 import Image from "next/image";
 import asset19 from "@/assets/asset19.svg";
 import asset20 from "@/assets/asset20.svg";
 import asset21 from "@/assets/asset21.svg";
 import asset22 from "@/assets/asset22.svg";
 import Link from "next/link";
-// import { useEffect } from "react";
+import { useState } from "react";
 
 export default function ModalComponent({ onBtnClick }) {
-  const handleFileChange = (e)=>{
-    const file = e.target.files[0];
-    async function addFileChangeHandler(){
+  const [file, setFile] = useState(null);
+
+  const handleFileChange = (event) => {
+    setFile(event.target.files[0]);
+  };
+
+  const handleFileSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append("file", file);
+    // console.log(formData, file);
+    try {
+      // console.log(formData);
       const response = await fetch("/api/upload", {
-        method:"POST",
-        body: JSON.stringify(file),
-        headers:{
+        method: "POST",
+        body: formData,
+        header:{
           'Content-Type':'application/json'
         }
       });
       const data = await response.json();
       console.log(data);
+      // console.log("File Uploaded Successfully");
+    } catch (error) {
+      console.error("Error uploading file:", error);
     }
-    addFileChangeHandler();
-  }
+  };
   return (
     <div className="modal-overlay w-[100vw] h-[100vh] overflow-hidden absolute z-50 top-0 left-0 bg-[#0217238A] bg-opacity-[54%] flex justify-center items-center">
       <div className="modal-wrapper w-[1090px] h-[546px] relative bg-white rounded-md">
@@ -58,7 +70,7 @@ export default function ModalComponent({ onBtnClick }) {
             <div className="w-2/6 border-r border-grey-600 h-full flex-center flex-col relative">
               <div className="px-5">
                 <div className="relative w-full  pt-6 pb-3 flex place-items-center gap-3 border-b border-grey-600">
-                  <Image src={asset21} width={50} height={50} alt="csv"/>
+                  <Image src={asset21} width={50} height={50} alt="csv" />
                   <span>CSV </span>
                 </div>
                 <div className="text-sm  text-gray-light pt-3">
@@ -87,36 +99,39 @@ export default function ModalComponent({ onBtnClick }) {
               <p className="mb-3 text-sm text-grey-500">Upload CSV File</p>
               <div className="w-full h-[340px] border border-grey-600 p-2  relative rounded-md bg-white">
                 <div className="w-full h-full rounded-md border border-dashed border-white-500 text-sm flex justify-center items-center flex-col">
-                  <label
-                    htmlFor="fileInput"
-                    className="w-full h-full rounded-md border border-dashed border-white-500 text-sm flex justify-center items-center flex-col"
-                  >
-                    <Image
-                      src={asset20}
-                      width={20}
-                      height={20}
-                      className="mx-auto pb-2"
-                      alt="uploadfile"
-                    />
-                    <div className="text-grey-500 ">
-                      Drag and drop or
-                      <span className="text-blue-600 underline font-[500] cursor-pointer mx-1">
-                        browse your files
+                  <form onSubmit={handleFileSubmit}>
+                    <label
+                      htmlFor="fileInput"
+                      className="w-full h-full rounded-md border border-dashed border-white-500 text-sm flex justify-center items-center flex-col"
+                    >
+                      <Image
+                        src={asset20}
+                        width={20}
+                        height={20}
+                        className="mx-auto pb-2"
+                        alt="uploadfile"
+                      />
+                      <div className="text-grey-500 ">
+                        Drag and drop or
+                        <span className="text-blue-600 underline font-[500] cursor-pointer mx-1">
+                          browse your files
+                        </span>
+                        to upload
+                      </div>
+                      <span className="text-xs mt-1 text-gray-light">
+                        .csv or .xlsx 1GB max
                       </span>
-                      to upload
-                    </div>
-                    <span className="text-xs mt-1 text-gray-light">
-                      .csv or .xlsx 1GB max
-                    </span>
-                    <input
-                      type="file"
-                      id="fileInput"
-                      name="csvFile"
-                      accept=".csv, .xls, .xlsx"
-                      className="inputfile hidden"
-                      onChange={handleFileChange}
-                    />
-                  </label>
+                      <input
+                        type="file"
+                        id="fileInput"
+                        name="csvFile"
+                        accept=".csv, .xls, .xlsx"
+                        className="inputfile hidden"
+                        onChange={handleFileChange}
+                      />
+                      <button type="submit">Submit</button>
+                    </label>
+                  </form>
                 </div>
               </div>
             </div>
