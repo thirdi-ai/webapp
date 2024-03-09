@@ -10,31 +10,27 @@ import { useState } from "react";
 export default function ModalComponent({ onBtnClick }) {
   const [file, setFile] = useState(null);
 
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
-  };
+const handleFileChange = async (event) => {
+  const selectedFile = event.target.files[0];
+  setFile(selectedFile);
+  const formData = new FormData();
+  formData.append("file", selectedFile);
+  // console.log(formData, file);
+  try {
+    // console.log(formData);
+    const response = await fetch("/api/upload", {
+      method: "POST",
+      body: formData,
+    });
+    const data = await response.json();
+    console.log(data);
+    // console.log("File Uploaded Successfully");
+  } catch (error) {
+    console.error("Error uploading file:", error);
+  }
+};
 
-  const handleFileSubmit = async (event) => {
-    event.preventDefault();
-    const formData = new FormData();
-    formData.append("file", file);
-    // console.log(formData, file);
-    try {
-      // console.log(formData);
-      const response = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-        header:{
-          'Content-Type':'application/json'
-        }
-      });
-      const data = await response.json();
-      console.log(data);
-      // console.log("File Uploaded Successfully");
-    } catch (error) {
-      console.error("Error uploading file:", error);
-    }
-  };
+
   return (
     <div className="modal-overlay w-[100vw] h-[100vh] overflow-hidden absolute z-50 top-0 left-0 bg-[#0217238A] bg-opacity-[54%] flex justify-center items-center">
       <div className="modal-wrapper w-[1090px] h-[546px] relative bg-white rounded-md">
@@ -99,39 +95,36 @@ export default function ModalComponent({ onBtnClick }) {
               <p className="mb-3 text-sm text-grey-500">Upload CSV File</p>
               <div className="w-full h-[340px] border border-grey-600 p-2  relative rounded-md bg-white">
                 <div className="w-full h-full rounded-md border border-dashed border-white-500 text-sm flex justify-center items-center flex-col">
-                  <form onSubmit={handleFileSubmit}>
-                    <label
-                      htmlFor="fileInput"
-                      className="w-full h-full rounded-md border border-dashed border-white-500 text-sm flex justify-center items-center flex-col"
-                    >
-                      <Image
-                        src={asset20}
-                        width={20}
-                        height={20}
-                        className="mx-auto pb-2"
-                        alt="uploadfile"
-                      />
-                      <div className="text-grey-500 ">
-                        Drag and drop or
-                        <span className="text-blue-600 underline font-[500] cursor-pointer mx-1">
-                          browse your files
-                        </span>
-                        to upload
-                      </div>
-                      <span className="text-xs mt-1 text-gray-light">
-                        .csv or .xlsx 1GB max
+                  <label
+                    htmlFor="fileInput"
+                    className="w-full h-full rounded-md border border-dashed border-white-500 text-sm flex justify-center items-center flex-col"
+                  >
+                    <Image
+                      src={asset20}
+                      width={20}
+                      height={20}
+                      className="mx-auto pb-2"
+                      alt="uploadfile"
+                    />
+                    <div className="text-grey-500 ">
+                      Drag and drop or
+                      <span className="text-blue-600 underline font-[500] cursor-pointer mx-1">
+                        browse your files
                       </span>
-                      <input
-                        type="file"
-                        id="fileInput"
-                        name="csvFile"
-                        accept=".csv, .xls, .xlsx"
-                        className="inputfile hidden"
-                        onChange={handleFileChange}
-                      />
-                      <button type="submit">Submit</button>
-                    </label>
-                  </form>
+                      to upload
+                    </div>
+                    <span className="text-xs mt-1 text-gray-light">
+                      .csv or .xlsx 1GB max
+                    </span>
+                    <input
+                      type="file"
+                      id="fileInput"
+                      name="csvFile"
+                      accept=".csv, .xls, .xlsx"
+                      className="inputfile hidden"
+                      onChange={handleFileChange}
+                    />
+                  </label>
                 </div>
               </div>
             </div>
