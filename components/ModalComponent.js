@@ -10,6 +10,7 @@ import SpreadsheetComponent from "./SpreadsheetComponent";
 
 export default function ModalComponent({ onBtnClick }) {
   const [fileData, setFileData] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleFileChange = async (event) => {
     const selectedFile = event.target.files[0];
@@ -21,7 +22,13 @@ export default function ModalComponent({ onBtnClick }) {
         body: formData,
       });
       const data = await response.json();
-      setFileData(data);
+      console.log(data);
+      if (Array.isArray(data)) {
+        setFileData(data);
+      }
+      else{
+        setErrorMessage(data);
+      }
     } catch (error) {
       console.error("Error uploading file:", error);
     }
@@ -92,7 +99,7 @@ export default function ModalComponent({ onBtnClick }) {
                 <SpreadsheetComponent data={fileData} />
               ) : (
                 <div className="p-6">
-                  <p className="mb-3 text-sm text-grey-500">Upload CSV File</p>
+                  <p className="mb-3 text-sm text-grey-500">Upload CSV File {errorMessage && <span className="ml-4 text-[10px] text-red-600">{errorMessage.error}</span>}</p>
                   <div className="w-full h-[340px] border border-grey-600 p-2  relative rounded-md bg-white">
                     <div className="w-full h-full rounded-md border border-dashed border-white-500 text-sm flex justify-center items-center flex-col relative">
                       <div className="w-full h-full relative overflow-hidden">
@@ -108,7 +115,7 @@ export default function ModalComponent({ onBtnClick }) {
                             alt="uploadfile"
                           />
                           <div className="text-grey-500 ">
-                            Drag and drop or{" "}
+                            Drag and drop or
                             <span className="text-blue-600 underline font-[500] cursor-pointer mx-1">
                               browse your files
                             </span>
@@ -121,7 +128,6 @@ export default function ModalComponent({ onBtnClick }) {
                             type="file"
                             id="fileInput"
                             name="csvFile"
-                            accept=".csv, .xls, .xlsx"
                             className="inputfile hidden"
                             onChange={handleFileChange}
                           />
