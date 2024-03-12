@@ -91,7 +91,7 @@ export default function ModalComponent({ onBtnClick }) {
               {fileData ? (
                 <SpreadsheetComponent data={fileData} />
               ) : (
-                <>
+                <div className="p-6">
                   <p className="mb-3 text-sm text-grey-500">Upload CSV File</p>
                   <div className="w-full h-[340px] border border-grey-600 p-2  relative rounded-md bg-white">
                     <div className="w-full h-full rounded-md border border-dashed border-white-500 text-sm flex justify-center items-center flex-col relative">
@@ -129,7 +129,7 @@ export default function ModalComponent({ onBtnClick }) {
                       </div>
                     </div>
                   </div>
-                </>
+                </div>
               )}
             </div>
           </div>
