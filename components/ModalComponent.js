@@ -1,4 +1,4 @@
-"use client";
+import React from "react";
 import Image from "next/image";
 import asset19 from "@/assets/asset19.svg";
 import asset20 from "@/assets/asset20.svg";
@@ -6,30 +6,26 @@ import asset21 from "@/assets/asset21.svg";
 import asset22 from "@/assets/asset22.svg";
 import Link from "next/link";
 import { useState } from "react";
+import SpreadsheetComponent from "./SpreadsheetComponent";
 
 export default function ModalComponent({ onBtnClick }) {
-  const [file, setFile] = useState(null);
+  const [fileData, setFileData] = useState(null);
 
-const handleFileChange = async (event) => {
-  const selectedFile = event.target.files[0];
-  setFile(selectedFile);
-  const formData = new FormData();
-  formData.append("file", selectedFile);
-  // console.log(formData, file);
-  try {
-    // console.log(formData);
-    const response = await fetch("/api/upload", {
-      method: "POST",
-      body: formData,
-    });
-    const data = await response.json();
-    console.log(data);
-    // console.log("File Uploaded Successfully");
-  } catch (error) {
-    console.error("Error uploading file:", error);
-  }
-};
-
+  const handleFileChange = async (event) => {
+    const selectedFile = event.target.files[0];
+    const formData = new FormData();
+    formData.append("file", selectedFile);
+    try {
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+      setFileData(data);
+    } catch (error) {
+      console.error("Error uploading file:", error);
+    }
+  };
 
   return (
     <div className="modal-overlay w-[100vw] h-[100vh] overflow-hidden absolute z-50 top-0 left-0 bg-[#0217238A] bg-opacity-[54%] flex justify-center items-center">
@@ -91,42 +87,50 @@ const handleFileChange = async (event) => {
                 </button>
               </div>
             </div>
-            <div className="w-4/6 h-full relative p-7 bg-white-smoke">
-              <p className="mb-3 text-sm text-grey-500">Upload CSV File</p>
-              <div className="w-full h-[340px] border border-grey-600 p-2  relative rounded-md bg-white">
-                <div className="w-full h-full rounded-md border border-dashed border-white-500 text-sm flex justify-center items-center flex-col">
-                  <label
-                    htmlFor="fileInput"
-                    className="w-full h-full rounded-md border border-dashed border-white-500 text-sm flex justify-center items-center flex-col"
-                  >
-                    <Image
-                      src={asset20}
-                      width={20}
-                      height={20}
-                      className="mx-auto pb-2"
-                      alt="uploadfile"
-                    />
-                    <div className="text-grey-500 ">
-                      Drag and drop or
-                      <span className="text-blue-600 underline font-[500] cursor-pointer mx-1">
-                        browse your files
-                      </span>
-                      to upload
+            <div className="w-4/6 h-full relativebg-white-smoke overflow-x-scroll custom-scrollbar">
+              {fileData ? (
+                <SpreadsheetComponent data={fileData} />
+              ) : (
+                <>
+                  <p className="mb-3 text-sm text-grey-500">Upload CSV File</p>
+                  <div className="w-full h-[340px] border border-grey-600 p-2  relative rounded-md bg-white">
+                    <div className="w-full h-full rounded-md border border-dashed border-white-500 text-sm flex justify-center items-center flex-col relative">
+                      <div className="w-full h-full relative overflow-hidden">
+                        <label
+                          htmlFor="fileInput"
+                          className="w-full h-full rounded-md border border-dashed border-white-500 text-sm flex justify-center items-center flex-col"
+                        >
+                          <Image
+                            src={asset20}
+                            width={20}
+                            height={20}
+                            className="mx-auto pb-2"
+                            alt="uploadfile"
+                          />
+                          <div className="text-grey-500 ">
+                            Drag and drop or{" "}
+                            <span className="text-blue-600 underline font-[500] cursor-pointer mx-1">
+                              browse your files
+                            </span>
+                            to upload
+                          </div>
+                          <span className="text-xs mt-1 text-gray-light">
+                            .csv or .xlsx 1GB max
+                          </span>
+                          <input
+                            type="file"
+                            id="fileInput"
+                            name="csvFile"
+                            accept=".csv, .xls, .xlsx"
+                            className="inputfile hidden"
+                            onChange={handleFileChange}
+                          />
+                        </label>
+                      </div>
                     </div>
-                    <span className="text-xs mt-1 text-gray-light">
-                      .csv or .xlsx 1GB max
-                    </span>
-                    <input
-                      type="file"
-                      id="fileInput"
-                      name="csvFile"
-                      accept=".csv, .xls, .xlsx"
-                      className="inputfile hidden"
-                      onChange={handleFileChange}
-                    />
-                  </label>
-                </div>
-              </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
