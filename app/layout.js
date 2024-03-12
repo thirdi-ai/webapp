@@ -1,7 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import SideBar from "@/components/SideBar";
-// import Header from "@/components/Header";
 import Details from "@/components/Details";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -16,7 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="flex w-full relative max-h-screen min-h-screen">
         <SideBar />
-        {children}
+        <div className="w-full border-x border-grey-600 custom-scrollbar overflow-y-scroll">{children}</div>
         <Details />
       </body>
     </html>

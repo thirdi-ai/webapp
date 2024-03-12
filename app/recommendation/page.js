@@ -17,7 +17,6 @@ export default function RecommendationsPage({ searchParams }) {
           <h1 className="text-lg">No Recommendations</h1>
           <Link href="/dataupload">
             <button className="btn">Upload Data</button>
-  
           </Link>
         </>
       )}

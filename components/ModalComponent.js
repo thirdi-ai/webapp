@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import asset19 from "@/assets/asset19.svg";
@@ -25,8 +26,7 @@ export default function ModalComponent({ onBtnClick }) {
       console.log(data);
       if (Array.isArray(data)) {
         setFileData(data);
-      }
-      else{
+      } else {
         setErrorMessage(data);
       }
     } catch (error) {
@@ -99,7 +99,14 @@ export default function ModalComponent({ onBtnClick }) {
                 <SpreadsheetComponent data={fileData} />
               ) : (
                 <div className="p-6">
-                  <p className="mb-3 text-sm text-grey-500">Upload CSV File {errorMessage && <span className="ml-4 text-[10px] text-red-600">{errorMessage.error}</span>}</p>
+                  <p className="mb-3 text-sm text-grey-500">
+                    Upload CSV File{" "}
+                    {errorMessage && (
+                      <span className="ml-4 text-[10px] text-red-600">
+                        {errorMessage.error}
+                      </span>
+                    )}
+                  </p>
                   <div className="w-full h-[340px] border border-grey-600 p-2  relative rounded-md bg-white">
                     <div className="w-full h-full rounded-md border border-dashed border-white-500 text-sm flex justify-center items-center flex-col relative">
                       <div className="w-full h-full relative overflow-hidden">
