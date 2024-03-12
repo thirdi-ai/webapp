@@ -14,62 +14,62 @@ import ModalComponent from "@/components/ModalComponent";
 export default function DataUpload() {
   //  const router = useRouter();
   const [showModal, setShowModal] = useState(false);
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [displayFileName, setDisplayFileName] = useState(false);
-  const [showLoader, setShowLoader] = useState(false);
-  const [csvData, setCsvData] = useState([]);
-  const [showBtn, setShowBtn] = useState(false);
-  const [genereateRecommendations, setGenerateRecommendations] =
-    useState(false);
+  // const [selectedFile, setSelectedFile] = useState(null);
+  // const [displayFileName, setDisplayFileName] = useState(false);
+  // const [showLoader, setShowLoader] = useState(false);
+  // const [csvData, setCsvData] = useState([]);
+  // const [showBtn, setShowBtn] = useState(false);
+  // const [genereateRecommendations, setGenerateRecommendations] =
+  //   useState(false);
 
-  // parseCSV function
-  const parseCSV = (csvText) => {
-    const lines = csvText.split("\n");
-    const headers = lines[0].split(",");
-    const parsedData = [];
+  // // parseCSV function
+  // const parseCSV = (csvText) => {
+  //   const lines = csvText.split("\n");
+  //   const headers = lines[0].split(",");
+  //   const parsedData = [];
 
-    for (let i = 1; i < lines.length; i++) {
-      const currentLine = lines[i].split(",");
-      console.log(lines[i]);
+  //   for (let i = 1; i < lines.length; i++) {
+  //     const currentLine = lines[i].split(",");
+  //     console.log(lines[i]);
 
-      if (currentLine.length === headers.length) {
-        const row = {};
-        for (let j = 0; j < headers.length; j++) {
-          row[headers[j].trim()] = currentLine[j].trim();
-        }
-        parsedData.push(row);
-      }
-    }
-    setCsvData(parsedData);
-  };
-  const handleButtonClick = () => {
-    setShowBtn(true);
-  };
-  const handleRecommendations = () => {
-    setGenerateRecommendations(true);
-  };
-  // FileChangeHandler
-  const handleFileChange = (e) => {
-    let file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
+  //     if (currentLine.length === headers.length) {
+  //       const row = {};
+  //       for (let j = 0; j < headers.length; j++) {
+  //         row[headers[j].trim()] = currentLine[j].trim();
+  //       }
+  //       parsedData.push(row);
+  //     }
+  //   }
+  //   setCsvData(parsedData);
+  // };
+  // const handleButtonClick = () => {
+  //   setShowBtn(true);
+  // };
+  // const handleRecommendations = () => {
+  //   setGenerateRecommendations(true);
+  // };
+  // // FileChangeHandler
+  // const handleFileChange = (e) => {
+  //   let file = e.target.files[0];
+  //   if (file) {
+  //     const reader = new FileReader();
 
-      reader.onload = (e) => {
-        const csvText = e.target.result;
-        parseCSV(csvText);
-      };
+  //     reader.onload = (e) => {
+  //       const csvText = e.target.result;
+  //       parseCSV(csvText);
+  //     };
 
-      reader.readAsText(file);
-    }
-    setSelectedFile(e.target.files[0]);
-    setDisplayFileName(false);
-    setShowLoader(true);
-    setTimeout(() => {
-      setDisplayFileName(true);
-      setShowLoader(false);
-      // Show file name after 3 seconds
-    }, 3000);
-  };
+  //     reader.readAsText(file);
+  //   }
+  //   setSelectedFile(e.target.files[0]);
+  //   setDisplayFileName(false);
+  //   setShowLoader(true);
+  //   setTimeout(() => {
+  //     setDisplayFileName(true);
+  //     setShowLoader(false);
+  //     // Show file name after 3 seconds
+  //   }, 3000);
+  // };
 
   return (
     <main className="data-upload w-full flex flex-col z-30 p-[30px] pr-0 border-x border-grey max-h-screen">
