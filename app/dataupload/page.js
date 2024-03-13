@@ -24,9 +24,7 @@ export default function DataUpload() {
                 <Image
                   src={asset11}
                   alt="csv file"
-                  width={60}
-                  height={60}
-                  className="object-contain mx-auto"
+                  className="w-[60px] h-[60px] object-contain mx-auto"
                 />
               </div>
               <div className="card-text w-full flex flex-col gap-2 relative">

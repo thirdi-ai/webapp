@@ -23,7 +23,6 @@ export default function ModalComponent({ onBtnClick }) {
         body: formData,
       });
       const data = await response.json();
-      console.log(data);
       if (Array.isArray(data)) {
         setFileData(data);
       } else {
@@ -47,7 +46,7 @@ export default function ModalComponent({ onBtnClick }) {
                 className="p-1 bg-white-400 rounded-[4px]"
                 onClick={onBtnClick}
               >
-                <Image src={asset19} width={12} height={12} alt="cross" />
+                <Image src={asset19} width={12} alt="cross" />
               </button>
             </div>
             <div className="text-[13px] flex gap-6 mt-4">
@@ -69,7 +68,7 @@ export default function ModalComponent({ onBtnClick }) {
             <div className="w-2/6 border-r border-grey-600 h-full flex-center flex-col relative">
               <div className="px-5">
                 <div className="relative w-full  pt-6 pb-3 flex place-items-center gap-3 border-b border-grey-600">
-                  <Image src={asset21} width={50} height={50} alt="csv" />
+                  <Image src={asset21} width={50} alt="csv" />
                   <span>CSV </span>
                 </div>
                 <div className="text-sm  text-gray-light pt-3">
@@ -85,9 +84,7 @@ export default function ModalComponent({ onBtnClick }) {
                 <button className="flex place-items-center bg-grey text-white px-3 rounded-sm py-1">
                   <Image
                     src={asset22}
-                    width={14}
-                    height={12}
-                    className="mr-1"
+                    className="mr-1 w-[14px] h-[12px]"
                     alt="right-arrow"
                   />
                   Next
@@ -116,9 +113,7 @@ export default function ModalComponent({ onBtnClick }) {
                         >
                           <Image
                             src={asset20}
-                            width={20}
-                            height={20}
-                            className="mx-auto pb-2"
+                            className="mx-auto w-[20px] pb-2"
                             alt="uploadfile"
                           />
                           <div className="text-grey-500 ">
