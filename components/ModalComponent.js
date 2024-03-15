@@ -11,7 +11,9 @@ import SpreadsheetComponent from "./SpreadsheetComponent";
 
 export default function ModalComponent({ onBtnClick }) {
   const [fileData, setFileData] = useState(null);
+  const [fileUploaded, setFileUploaded] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [showPromptPage, setShowPromptPage] = useState(false);
 
   const handleFileChange = async (event) => {
     const selectedFile = event.target.files[0];
@@ -26,6 +28,7 @@ export default function ModalComponent({ onBtnClick }) {
       console.log(data);
       if (Array.isArray(data)) {
         setFileData(data);
+        setFileUploaded(true);
       } else {
         setErrorMessage(data);
       }
@@ -82,10 +85,16 @@ export default function ModalComponent({ onBtnClick }) {
               </div>
               <div className="h-[54px] relative border-t border-grey-600 w-full text-sm px-5 flex-center">
                 <button>Cancel</button>
-                <button className="flex place-items-center bg-grey text-white px-3 rounded-sm py-1">
+                <button
+                  className={`flex place-items-center   text-white px-3 rounded-sm py-1 ${fileUploaded ? "bg-blue-400": "bg-grey"}`}
+                  onClick={() => {
+                    setShowPromptPage(true);
+                  }}
+                  disabled={!fileUploaded}
+                >
                   <Image
                     src={asset22}
-                    className="mr-1 w-[14px] h-[12px]"
+                    className="mr-1 w-[14px] h-[12px] "
                     alt="right-arrow"
                   />
                   Next
@@ -93,7 +102,16 @@ export default function ModalComponent({ onBtnClick }) {
               </div>
             </div>
             <div className="w-4/6 h-full relativebg-white-smoke overflow-x-scroll custom-scrollbar">
-              {fileData ? (
+              {showPromptPage ? (
+                <div className="p-6 w-full relative">
+                  <textarea
+                    rows={8}
+                    name="prompt"
+                    placeholder="Write your prompt here..."
+                    className="w-full bg-grey bg-opacity-35 rounded-md p-3 text-sm"
+                  ></textarea>
+                </div>
+              ) : fileData ? (
                 <SpreadsheetComponent data={fileData} />
               ) : (
                 <div className="p-6">
