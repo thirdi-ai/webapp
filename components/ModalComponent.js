@@ -23,6 +23,7 @@ export default function ModalComponent({ onBtnClick }) {
         body: formData,
       });
       const data = await response.json();
+      console.log(data);
       if (Array.isArray(data)) {
         setFileData(data);
       } else {

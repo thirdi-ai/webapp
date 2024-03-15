@@ -9,10 +9,10 @@ export default function SpreadsheetComponent({ data }) {
               <th
                 key={header}
                 className={`px-3 py-[9px] ${
-                  index === "Index" ? "min-w-[40px] max-w-[50px] " : "min-w-[90px] max-w-[200px]"
-                }  text-start`}
+                  index === "Index" ? "min-w-[40px] max-w-[50px] " : "min-w-[110px] max-w-[160px]"
+                }  text-start break-keep`}
               >
-                {header.length > 12 ? header.slice(0, 12) + "..." : header}
+                {header.length >= 10 ? header.slice(0, 10) + "..." : header}
               </th>
             ))}
           </tr>

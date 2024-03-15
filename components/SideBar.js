@@ -9,7 +9,7 @@ export default function SideBar() {
   const path = usePathname();
 
   return (
-    <div className="sidebar min-w-[350px] max-h-screen overflow-hidden relative p-[30px] ">
+    <div className="sidebar max-h-screen overflow-hidden relative p-[30px] ">
       <div className="sidebar-top h-[60px] flex justify-between items-center">
         <div className="logo">
           <Link href="/">

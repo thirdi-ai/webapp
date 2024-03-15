@@ -14,9 +14,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="flex w-full relative max-h-screen min-h-screen">
-        <SideBar />
-        <div className="w-full border-x border-grey-600 custom-scrollbar overflow-y-scroll">{children}</div>
-        <Details />
+        <div className="w-[20%]"><SideBar /></div>
+        <div className="w-[60%] border-x border-grey-600 custom-scrollbar overflow-y-scroll">{children}</div>
+        <div className="w-[20%]"><Details /></div>
+        
       </body>
     </html>
   );

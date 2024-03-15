@@ -2,7 +2,7 @@ import multer from "multer";
 import { parse } from "csv-parse";
 import fs from "fs";
 import xlsx from "xlsx";
-
+import db from "@/app/config/db";
 const upload = multer({ dest: "uploads/" });
 
 export const config = {
@@ -12,8 +12,9 @@ export const config = {
 };
 
 export default async function handler(req, res) {
+
   try {
-    upload.single("file")(req, res, (err) => {
+    upload.single("file")(req, res, async (err) => {
       if (err) {
         return res.status(400).json({ error: err.message });
       }
@@ -32,12 +33,18 @@ export default async function handler(req, res) {
         req.file.mimetype !== "application/vnd.ms-excel"
       ) {
         fs.unlinkSync(filePath); // Delete the file
-        return res
-          .status(400)
-          .json({
-            error: "The file uploaded should be either a CSV or an Excel file.",
-          });
+        return res.status(400).json({
+          error: "The file uploaded should be either a CSV or an Excel file.",
+        });
       }
+
+      const uniqueId = Math.random().toString(36).substr(2, 9);
+
+      const insertFileQuery =
+        "INSERT INTO files (unique_id, name) VALUES (?, ?)";
+      await db
+        .promise()
+        .query(insertFileQuery, [uniqueId, req.file.filename]);
 
       if (
         req.file.mimetype ===
@@ -59,11 +66,13 @@ export default async function handler(req, res) {
           return obj;
         });
 
-        return res.status(200).json(objectsArray.slice(0, 10));
+        // Return data
+        res.status(200).json(objectsArray.slice(0, 10));
       }
 
+      // Read and parse CSV file
       const csvFileContent = fs.readFileSync(filePath, "utf-8");
-      parse(csvFileContent, { columns: true }, (err, data) => {
+      parse(csvFileContent, { columns: true }, async (err, data) => {
         if (err) {
           res.status(500).json({ error: "Error parsing CSV file" });
         } else {
