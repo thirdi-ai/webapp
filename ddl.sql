@@ -14,6 +14,9 @@ create table campaign(campaign_id int(11) not null auto_increment primary key,
     upload_details text, media_platform varchar(16), brand_id int(11), status boolean default true, secondary_goal varchar(16),
     foreign key (brand_id) references brand(brand_id) on delete cascade);
 
+create table campaign_targeting(campaign_target_id int(11) not null primary key, campaign_id int(11) not null, target_level1 varchar(16) not null, target_level2 varchar(16),
+    foreign key (campaign_id) references campaign(campaign_id) on delete cascade);
+
 create table recommendation_raw(id int(11) not null auto_increment primary key,
     original_text mediumtext, created date, revised_text mediumtext, last_updated date, version smallint, 
     campaign_id int(11), foreign key (campaign_id) references campaign(campaign_id) on delete cascade);
