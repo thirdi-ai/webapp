@@ -22,24 +22,12 @@ create table recommendation_raw(id int(11) not null auto_increment primary key,
     campaign_id int(11), foreign key (campaign_id) references campaign(campaign_id) on delete cascade);
 
 create table recommendation_summary(id int(11) not null auto_increment primary key,
-    original_text mediumtext, created date, revised_text mediumtext, last_updated date, version smallint, 
-    campaign_id int(11), recommedation_id int(11),
+    orig_cluster_name varchar(255), created date, rev_cluster_name varchar(255), last_updated date, version smallint, 
+    orig_characteristics varchar(255), rev_characteristics varchar(255), orig_metrics varchar(255), rev_metrics varchar(255), 
+    orig_opt_ideas varchar(255), rev_opt_ideas varchar(255), orig_rationale varchar(255), rev_rationale varchar(255),
+    orig_assets varchar(255), campaign_id int(11), recommendation_id int(11),
     foreign key (campaign_id) references campaign(campaign_id) on delete cascade,
     foreign key (recommedation_id) references recommendation_raw(id));
-
-create table insight_summary(id int(11) not null auto_increment primary key,
-    original_text mediumtext, created date, revised_text mediumtext, last_updated date, version smallint, 
-    campaign_id int(11), recommedation_id int(11),
-    foreign key (campaign_id) references campaign(campaign_id) on delete cascade,
-    foreign key (recommedation_id) references recommendation_raw(id));
-
-create table recommendation_details (id int(11) not null auto_increment primary key, keyname varchar(16) not null,
-    value varchar(16) not null, revised_value varchar(16), recommendation_summary_id int(11),
-    foreign key (recommendation_summary_id) references recommendation_summary(id) on delete cascade);
-
-create table insight_details (id int(11) not null auto_increment primary key, keyname varchar(16) not null,
-    value varchar(16) not null, revised_valued varchar(16), insight_summary_id int(11),
-    foreign key (insight_summary_id) references insight_summary(id) on delete cascade);
 
 create table recommendation_analysis_activity (id int(11) not null auto_increment primary key,
     status varchar(16), started date, completed date, campaign_id int(11), recommedation_id int(11),
