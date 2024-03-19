@@ -29,7 +29,10 @@ create table campaign_targeting_l1_md(id int(11) not null auto_increment primary
 create table campaign_targeting_l2_md(id int(11) not null auto_increment primary key, target_level2 varchar(50) not null,
     targeting_l1_id int(11) not null, foreign key (targeting_l1_id) references campaign_targeting_l1_md(id) on delete cascade);
 
-create table campaign_targeting(campaign_target_id int(11) not null primary key, campaign_id int(11) not null, 
+create table campaign_schema_md(campaign_schema_id int(11) not null auto_increment primary key,
+    schema_name varchar(30) not null, description varchar(255));
+    
+create table campaign_targeting(campaign_target_id int(11) not null auto_increment primary key, campaign_id int(11) not null, 
     target_level1 varchar(50) not null, target_level2 varchar(50) not null,
     foreign key (campaign_id) references campaign(campaign_id) on delete cascade);
 
