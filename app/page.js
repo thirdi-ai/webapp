@@ -1,18 +1,19 @@
-import CompetitorAnalysisCard from "@/components/CompetitorAnalysisCard";
-import CompaignDetailsCard from "@/components/CompaignDetailsCard";
-import AudienceSegmentationCard from "@/components/AudienceSegmentationCard";
-import RecommendationContainer from "@/components/RecommendationContainer";
+import CompanyInfoForm from "@/components/HomePage/CompanyInfoForm";
 
 export default function HomePage() {
+  const d = new Date();
+  const newDate = d.toLocaleDateString("default", {
+    month: "short",
+    day: "2-digit",
+    year: "numeric",
+  });
   return (
-    <main>
-      {/* <div className="container p-6 flex flex-col gap-8">
-        <CompaignDetailsCard />
-        <RecommendationContainer />
-        <AudienceSegmentationCard />
-        <CompetitorAnalysisCard />
-      </div> */}
-      <h1>The Data has not been uploaded yet.</h1>
+    <main className="p-7">
+      <p className="text-xl">{newDate}</p>
+      <h1 className="text-[62px] mb-6">Welcome!</h1>
+      <div>
+        <CompanyInfoForm/>
+      </div>
     </main>
   );
 }
