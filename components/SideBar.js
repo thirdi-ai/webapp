@@ -34,8 +34,8 @@ export default function SideBar() {
               </Link>
             </li>
             <li>
-              <Link href="/dataupload" className={`nav-links ${path.startsWith("/dataupload") ? "bg-gray-200": ""} `}>
-                Data Upload
+              <Link href="/dataintegration" className={`nav-links ${path.startsWith("/dataintegration") ? "bg-gray-200": ""} `}>
+                Data Integration
               </Link>
             </li>
             <li>

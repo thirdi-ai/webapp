@@ -27,9 +27,9 @@ create table recommendation_summary(id int(11) not null auto_increment primary k
     orig_opt_ideas varchar(255), rev_opt_ideas varchar(255), orig_rationale varchar(255), rev_rationale varchar(255),
     orig_assets varchar(255), campaign_id int(11), recommendation_id int(11),
     foreign key (campaign_id) references campaign(campaign_id) on delete cascade,
-    foreign key (recommedation_id) references recommendation_raw(id));
+    foreign key (recommendation_id) references recommendation_raw(id));
 
 create table recommendation_analysis_activity (id int(11) not null auto_increment primary key,
-    status varchar(16), started date, completed date, campaign_id int(11), recommedation_id int(11),
+    status varchar(16), started date, completed date, campaign_id int(11), recommendation_id int(11),
     foreign key (campaign_id) references campaign(campaign_id) on delete cascade,
-    foreign key (recommedation_id) references recommendation_raw(id) on delete cascade);
+    foreign key (recommendation_id) references recommendation_raw(id) on delete cascade);

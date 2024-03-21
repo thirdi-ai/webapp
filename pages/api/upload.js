@@ -2,7 +2,6 @@ import multer from "multer";
 import { parse } from "csv-parse";
 import fs from "fs";
 import xlsx from "xlsx";
-import db from "@/app/config/db";
 const upload = multer({ dest: "uploads/" });
 
 export const config = {
@@ -38,13 +37,13 @@ export default async function handler(req, res) {
         });
       }
 
-      const uniqueId = Math.random().toString(36).substr(2, 9);
+      // const uniqueId = Math.random().toString(36).substr(2, 9);
 
-      const insertFileQuery =
-        "INSERT INTO files (unique_id, name) VALUES (?, ?)";
-      await db
-        .promise()
-        .query(insertFileQuery, [uniqueId, req.file.filename]);
+      // const insertFileQuery =
+      //   "INSERT INTO files (unique_id, name) VALUES (?, ?)";
+      // await db
+      //   .promise()
+      //   .query(insertFileQuery, [uniqueId, req.file.filename]);
 
       if (
         req.file.mimetype ===
