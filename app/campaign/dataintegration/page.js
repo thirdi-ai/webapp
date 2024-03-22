@@ -7,7 +7,7 @@ import Card from "@/components/Card";
 import ConnectorsCard from "@/components/ConnectorsCard";
 import ModalComponent from "@/components/ModalComponent";
 
-export default function FileUpload() {
+export default function DataIntegration() {
   const [showModalComponent, setShowModalComponent] = useState(false);
 
   return (

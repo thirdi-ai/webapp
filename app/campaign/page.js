@@ -3,7 +3,7 @@ import Card from "@/components/Card";
 import Link from "next/link";
 import { useRef } from "react";
 
-export default function DataIntegration() {
+export default function CampaignPage() {
   const refCompaignName = useRef();
   const refTargetingDetails = useRef();
   const refCompaignGoal = useRef();
@@ -27,22 +27,58 @@ export default function DataIntegration() {
               />
             </div>
             <div className="flex-center">
-              <label id="target">Targeting Details</label>
-              <select name="target" id="target" className="text-sm px-4 py-2 " required>
+              <label id="target">Targeting Details 1</label>
+              <select
+                name="target"
+                id="target"
+                className="text-sm px-4 py-2 "
+                required
+              >
+                <option value="default">Select Option</option>
+              </select>
+            </div>
+            <div className="flex-center">
+              <label id="target">Targeting Details 2</label>
+              <select
+                name="target"
+                id="target"
+                className="text-sm px-4 py-2 "
+                required
+              >
                 <option value="default">Select Option</option>
               </select>
             </div>
             <div className="flex-center">
               <label id="goal">Compaign Goal</label>
-              <select name="goal" id="goal" className="text-sm  px-4 py-2 " required>
+              <select
+                name="goal"
+                id="goal"
+                className="text-sm  px-4 py-2 "
+                required
+              >
                 <option value="default">Select Option</option>
               </select>
             </div>
-            <div className="flex-center">
+            <div className="flex justify-between relative">
               <label id="metric">Key Metric</label>
-              <select name="metric" id="metric" className="text-sm px-4 py-2 " required>
-                <option value="default">Select Option</option>
-              </select>
+              <div className="flex flex-col gap-2">
+                <select
+                  name="metric"
+                  id="metric"
+                  className="text-sm px-4 py-2 "
+                  required
+                >
+                  <option value="default">Select Option</option>
+                </select>
+                <select
+                  name="metric"
+                  id="metric"
+                  className="text-[12px] px-4 py-2 bg-white custom-dropdown"
+                  required
+                >
+                  <option value="default">Add Secondary Goal</option>
+                </select>
+              </div>
             </div>
             <div className="flex-center">
               <label id="metric">Target Metric</label>
@@ -56,7 +92,9 @@ export default function DataIntegration() {
               />
             </div>
             <Link href="/dataintegration/file-upload">
-              <button type="submit" className="btn w-full">Next</button>
+              <button type="submit" className="btn w-full">
+                Next
+              </button>
             </Link>
           </form>
         </Card>
