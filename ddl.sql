@@ -9,7 +9,7 @@ create table brand(brand_id int(11) not null auto_increment primary key, brand_n
     random_id int(11) unique, email varchar(30), industry varchar(30), description varchar(255), 
     client_id int(11) not null, foreign key (client_id) references client(client_id) on delete cascade);
 
-create table brand_metadata(id int(11) not null auto_increment primary key, industry varchar(100) not null unique);
+create table brand_md(id int(11) not null auto_increment primary key, industry varchar(100) not null unique);
 
 create table campaign(campaign_id int(11) not null auto_increment primary key, 
     campaign_name varchar(256) not null unique, goal varchar(50) not null, metric varchar(50), metric_target int(11), 
@@ -43,8 +43,9 @@ create table recommendation_raw(id int(11) not null auto_increment primary key,
 create table recommendation_summary(id int(11) not null auto_increment primary key,
     orig_cluster_name varchar(255), created date, rev_cluster_name varchar(255), last_updated date, version smallint, 
     orig_characteristics varchar(255), rev_characteristics varchar(255), orig_metrics varchar(255), rev_metrics varchar(255), 
-    orig_opt_ideas varchar(255), rev_opt_ideas varchar(255), orig_rationale varchar(255), rev_rationale varchar(255),
-    orig_assets varchar(255), campaign_id int(11), recommendation_id int(11),
+    orig_opt_ideas mediumtext, rev_opt_ideas mediumtext, orig_rationale mediumtext, rev_rationale mediumtext,
+    orig_metric_current_value int(11), rev_metric_current_value int(11), orig_profile varchar(255), rev_profile varchar(255),
+    orig_assets mediumtext, rev_assets mediumtext, campaign_id int(11), recommendation_id int(11),
     foreign key (campaign_id) references campaign(campaign_id) on delete cascade,
     foreign key (recommedation_id) references recommendation_raw(id));
 
