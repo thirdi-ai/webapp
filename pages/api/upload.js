@@ -1,3 +1,4 @@
+
 import multer from "multer";
 import { parse } from "csv-parse";
 import fs from "fs";
@@ -11,7 +12,6 @@ export const config = {
 };
 
 export default async function handler(req, res) {
-
   try {
     upload.single("file")(req, res, async (err) => {
       if (err) {
@@ -37,22 +37,23 @@ export default async function handler(req, res) {
         });
       }
 
-      // const uniqueId = Math.random().toString(36).substr(2, 9);
-
-      // const insertFileQuery =
-      //   "INSERT INTO files (unique_id, name) VALUES (?, ?)";
-      // await db
-      //   .promise()
-      //   .query(insertFileQuery, [uniqueId, req.file.filename]);
-
+      // Check if the Excel file has multiple sheets
       if (
         req.file.mimetype ===
           "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || // xlsx
         req.file.mimetype === "application/vnd.ms-excel" // xls
       ) {
         const workbook = xlsx.readFile(filePath);
-        const sheetName = workbook.SheetNames[0];
-        const sheet = workbook.Sheets[sheetName];
+        const sheetNames = workbook.SheetNames;
+
+        if (sheetNames.length > 1) {
+          return res.status(400).json({
+            error:
+              "The file uploaded contains multiple sheets. Please upload each sheet individually in CSV or Excel format.",
+          });
+        }
+
+        const sheet = workbook.Sheets[sheetNames[0]];
         const data = xlsx.utils.sheet_to_json(sheet, { header: 1 });
 
         // Convert array of arrays to array of objects
