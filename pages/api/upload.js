@@ -64,9 +64,8 @@ export default async function handler(req, res) {
           });
           return obj;
         });
-
         // Return data
-        res.status(200).json(objectsArray.slice(0, 10));
+        res.status(200).json();
       }
 
       // Read and parse CSV file

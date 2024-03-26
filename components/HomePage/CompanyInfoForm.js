@@ -1,14 +1,30 @@
 "use client";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Card from "../Card";
-
 export default function CompanyInfoForm() {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [industryOptions, setIndustryOptions] = useState();
+  const [brandId, setBrandId] = useState();
   const refIndustryName = useRef();
   const refCompanyDesc = useRef();
   const refCompanyName = useRef();
   const refCompanyEmail = useRef();
+  useEffect(() => {
+    fetchFieldOptions();
+  }, []);
+  const fetchFieldOptions = async () => {
+    try {
+      const response = await fetch("/api/getfieldoption", {
+        method: "GET",
+      });
+      const data = await response.json();
+      setIndustryOptions(data.table6);
+      console.log(data);
+    } catch (error) {
+      console.log("Error uploading form:", error);
+    }
+  };
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const formData = {
@@ -26,7 +42,7 @@ export default function CompanyInfoForm() {
         body: JSON.stringify(formData),
       });
       const data = await response.json();
-      console.log(data);
+      setBrandId(data?.id[0][0]?.brand_id);
       setFormSubmitted(true);
     } catch (error) {
       console.log("Error uploading form:", error);
@@ -42,7 +58,7 @@ export default function CompanyInfoForm() {
               We see that you haven't uploaded any data yet. Click here to
               upload your compaign data.
             </p>
-            <Link href="/dataintegration">
+            <Link href={`/campaign?brandId=${brandId}`}>
               <button className="btn">Add Compaign</button>
             </Link>
           </div>
@@ -66,15 +82,23 @@ export default function CompanyInfoForm() {
               <label id="industry" className="mb-2">
                 Which industry are you in?
               </label>
-              <input
+              <select
                 ref={refIndustryName}
-                type="text"
-                placeholder="Ex: Information and technology"
-                name="companyIndustry"
+                name="industry"
                 id="industry"
+                className="text-sm px-4 py-2 w-full"
                 required
-                className="pl-2 pr-4 py-2 border border-grey"
-              />
+              >
+                <option value="default">Select Option</option>
+                {industryOptions &&
+                  industryOptions.map((fieldOption) => {
+                    return (
+                      <option value={fieldOption.industry} key={fieldOption.id}>
+                        {fieldOption.industry}
+                      </option>
+                    );
+                  })}
+              </select>
             </div>
             <div className="flex flex-col">
               <label id="company-info" className="mb-2">
@@ -104,10 +128,7 @@ export default function CompanyInfoForm() {
                 required
               />
             </div>
-            <button
-              type="submit"
-              className="btn"
-            >
+            <button type="submit" className="btn">
               Submit
             </button>
           </form>

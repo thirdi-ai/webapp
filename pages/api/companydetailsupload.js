@@ -5,7 +5,7 @@ export default async function handler(req, res) {
     try {
       const { companyEmail, companyName, companyIndustry, companyDesc } =
         req.body;
-    //   console.log("Data received:", req.body);
+      //   console.log("Data received:", req.body);
 
       const clientName = companyEmail.slice(0, 8);
       const checkQueryClientTable =
@@ -37,10 +37,11 @@ export default async function handler(req, res) {
           companyIndustry,
           companyDesc,
         ]);
-
+      const getBrandIdQuery = "SELECT brand_id FROM brand WHERE brand_name = ?";
+      const brandId = await db.promise().query(getBrandIdQuery, [companyName]);
       res
         .status(200)
-        .json({ message: "Company Details uploaded successfully" });
+        .json({ message: "Company Details uploaded successfully", id: brandId });
     } catch (err) {
       res.status(400).json({ message: "Upload failed" });
     }
