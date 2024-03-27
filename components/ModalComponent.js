@@ -7,6 +7,7 @@ import asset21 from "@/assets/asset21.svg";
 import asset22 from "@/assets/asset22.svg";
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 // import SpreadsheetComponent from "./SpreadsheetComponent";
 
 export default function ModalComponent({ onBtnClick }) {
@@ -14,7 +15,8 @@ export default function ModalComponent({ onBtnClick }) {
   const [fileUploaded, setFileUploaded] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [files, setFiles] = useState([]);
-  const [confirmData, setConfirmData] = useState(false);
+  const router = useRouter();
+  // const [confirmData, setConfirmData] = useState(false);
   // const [showPromptPage, setShowPromptPage] = useState(false);
 
   const handleFileChange = async (event) => {
@@ -27,6 +29,7 @@ export default function ModalComponent({ onBtnClick }) {
         body: formData,
       });
       const data = await response.json();
+      console.log("CSV file upload"+ data);
       if (Array.isArray(data)) {
         setFileData(data);
         setFileUploaded(true);
@@ -72,19 +75,14 @@ export default function ModalComponent({ onBtnClick }) {
           </div>
           <div className="modal-grid flex h-full relative">
             <div
-              className={`${
-                confirmData ? "w-1/2" : "w-2/6"
-              } border-r border-grey-600 h-full flex-center flex-col relative`}
+              className="w-2/6
+              border-r border-grey-600 h-full flex-center flex-col relative"
             >
               <div className="px-5">
                 <div className="border-b border-grey-600 py-4">
                   {fileUploaded ? (
                     <>
-                      {confirmData ? (
-                        <p className="text-sm font-semibold">Files Uploaded</p>
-                      ) : (
-                        <p className="text-sm font-semibold">Current Files</p>
-                      )}
+                      <p className="text-sm font-semibold">Files Uploaded</p>
                       <div className="flex flex-col gap-3 text-sm mt-4">
                         {files.map((file, index) => {
                           return (
@@ -113,43 +111,27 @@ export default function ModalComponent({ onBtnClick }) {
                 </div>
               </div>
               <div className="h-[54px] relative border-t border-grey-600 w-full text-sm px-5 flex-center">
-                {confirmData ? (
-                  <button className="flex place-items-center px-3 py-1 bg-blue-400 rounded-sm text-white mx-auto">
-                    Generate Recommendations{" "}
-                    <Image
-                      src={asset22}
-                      className="ml-1 w-[14px] h-[12px] "
-                      alt="right-arrow"
-                    />
-                  </button>
-                ) : (
-                  <div className="flex-center">
-                    <button>Cancel</button>
+                <div className="flex-center w-full">
+                  <button>Cancel</button>
+                  <Link href="/?recommendationGenerated=true">
                     <button
                       className={`flex place-items-center   text-white px-3 rounded-sm py-1 ${
                         fileUploaded ? "bg-blue-400" : "bg-grey"
                       }`}
                       disabled={!fileUploaded}
-                      onClick={() => {
-                        setConfirmData(true);
-                      }}
                     >
                       <Image
                         src={asset22}
                         className="mr-1 w-[14px] h-[12px] "
                         alt="right-arrow"
                       />
-                      Next
+                      Generate Recommendations
                     </button>
-                  </div>
-                )}
+                  </Link>
+                </div>
               </div>
             </div>
-            <div
-              className={`${
-                confirmData ? "w-1/2" : "w-4/6"
-              } h-full relativebg-white-smoke overflow-x-scroll custom-scrollbar`}
-            >
+            <div className="w-4/6 h-full relativebg-white-smoke overflow-x-scroll custom-scrollbar">
               {/* {showPromptPage ? (
                 <div className="p-6 w-full relative">
                   <textarea

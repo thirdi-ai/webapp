@@ -1,19 +1,27 @@
+"use client";
 import CompanyInfoForm from "@/components/HomePage/CompanyInfoForm";
+import HomeOverview from "@/components/HomePage/HomeOverview";
+import { useSearchParams } from "next/navigation";
 
 export default function HomePage() {
-  const d = new Date();
-  const newDate = d.toLocaleDateString("default", {
-    month: "short",
-    day: "2-digit",
-    year: "numeric",
-  });
+  // const [recommendationGenerated, setRecommendationGenerated] = useState(false);
+  const searchQuery = useSearchParams();
+  const recommendationGenerated =
+    searchQuery.get("recommendationGenerated") || false;
   return (
     <main className="p-7">
-      <p className="text-xl">{newDate}</p>
-      <h1 className="text-[62px] mb-6">Welcome!</h1>
-      <div>
-        <CompanyInfoForm/>
-      </div>
+      {recommendationGenerated ? (
+        <div>
+          <HomeOverview />
+        </div>
+      ) : (
+        <>
+          <h1 className="text-[62px] mb-6">Welcome!</h1>
+          <div>
+            <CompanyInfoForm />
+          </div>
+        </>
+      )}
     </main>
   );
 }

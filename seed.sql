@@ -63,3 +63,5 @@ insert into campaign_schema_md(schema_name, description) values ('Day','Date of 
 ('Good','Asset performance rating - above average.'),('Low','Asset performance rating - below average.'),
 ('Learning','Asset is in the learning phase.'),('Unrated',' Asset has not been rated.'),
 ('Asset ID','Unique identifier for the asset.'),('All conv. value','Total value derived from all conversions.');
+
+insert into recommendation_summary(orig_opt_ideas, orig_rationale, orig_assets) values ("Increase Bid for Top Performing Keywords", "Implementing the recommended bid adjustments will increase the daily budget by approximately 15%, resulting in a potential increase in overall spend and conversions", "KXHE1838SB");
