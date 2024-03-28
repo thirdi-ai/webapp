@@ -8,6 +8,7 @@ export default async function handler(req, res) {
         campaignName,
         targetPairs,
         campaignGoal,
+        campaignSecGoal,
         campaignTargetMetric,
         campaignKeyMetric,
         brandid,
@@ -29,7 +30,7 @@ export default async function handler(req, res) {
 
       // Insert campaign details into the campaign table
       const insertQueryCampaignTable =
-        "INSERT INTO campaign (campaign_name, goal, metric, metric_target, secondary_goal, brand_id) VALUES (?,?,?,?,?,?)";
+        "INSERT INTO campaign (campaign_name, goal, metric, metric_target,  secondary_goal, brand_id) VALUES (?,?,?,?,?,?)";
       await db.promise().query(insertQueryCampaignTable, [
         campaignName,
         campaignGoal,
