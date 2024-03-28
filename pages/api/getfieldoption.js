@@ -5,7 +5,7 @@ export default async function handler(req, res) {
     try {
       const target1_query =
         "SELECT target_level1, id FROM campaign_targeting_l1_md";
-      const target2_query = "SELECT target_level2, targeting_l1_id,id id FROM campaign_targeting_l2_md";
+      const target2_query = "SELECT target_level2, targeting_l1_id, id FROM campaign_targeting_l2_md";
       const keymetric_query = 'SELECT key_metrics FROM campaign_goal_metrics_md';
       const campaigngoal1_query= "SELECT goal,id FROM campaign_goal_md";
       const campaigngoal2_query= "SELECT secondary_goal,id FROM campaign_sec_goal_md";

@@ -7,15 +7,14 @@ import asset21 from "@/assets/asset21.svg";
 import asset22 from "@/assets/asset22.svg";
 import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 // import SpreadsheetComponent from "./SpreadsheetComponent";
 
-export default function ModalComponent({ onBtnClick }) {
+export default function ModalComponent({ onBtnClick, campaignid }) {
   const [fileData, setFileData] = useState(null);
   const [fileUploaded, setFileUploaded] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [files, setFiles] = useState([]);
-  const router = useRouter();
+  console.log("modal component" + campaignid);
   // const [confirmData, setConfirmData] = useState(false);
   // const [showPromptPage, setShowPromptPage] = useState(false);
 
@@ -29,7 +28,7 @@ export default function ModalComponent({ onBtnClick }) {
         body: formData,
       });
       const data = await response.json();
-      console.log("CSV file upload"+ data);
+      console.log("CSV file upload" + data);
       if (Array.isArray(data)) {
         setFileData(data);
         setFileUploaded(true);

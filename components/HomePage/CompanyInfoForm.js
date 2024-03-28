@@ -58,7 +58,7 @@ export default function CompanyInfoForm() {
               We see that you haven't uploaded any data yet. Click here to
               upload your compaign data.
             </p>
-            <Link href={`/campaign?brandId=${brandId}`}>
+            <Link href={`/campaign?brand_id=${brandId}`}>
               <button className="btn">Add Compaign</button>
             </Link>
           </div>

@@ -6,8 +6,11 @@ import { Connectors } from "@/Constants/constant";
 import Card from "@/components/Card";
 import ConnectorsCard from "@/components/ConnectorsCard";
 import ModalComponent from "@/components/ModalComponent";
+import { useSearchParams } from "next/navigation";
 
 export default function DataIntegration() {
+  const searchParams = useSearchParams();
+  const campaignId = searchParams.get("campaign_id");
   const [showModalComponent, setShowModalComponent] = useState(false);
 
   return (
@@ -56,6 +59,7 @@ export default function DataIntegration() {
             onBtnClick={() => {
               setShowModalComponent(false);
             }}
+            campaignid={campaignId}
           />
         )}
       </div>
